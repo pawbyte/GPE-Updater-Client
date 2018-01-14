@@ -15,5 +15,8 @@ configure_file (
   "${PROJECT_BINARY_DIR}/src/updaterConfig.hpp"
   )
 
-add_executable(GPE_Updater src/main.cpp)
+include_directories(${PROJECT_SOURCE_DIR}/src)
+set (SOURCES src/main.cpp src/cli.cpp)
+
+add_executable(GPE_Updater ${SOURCES})
 #target_link_libraries(GPE_Updater ${CONAN_LIBS})
