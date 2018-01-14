@@ -16,3 +16,26 @@ By default, the updater will not make any modifications to files. It will only r
 | -s   | Silent, No GUI. Just return a return code |
 | -u   | Update files in the project               |
 | --nb | No Backups                                |
+
+## Build Requirements
+
+Various libraries are needed for the project to be built correctly.  
+
+These tools/utilities are needed to build this project from source:
+ * CMake 2.6+
+ * Compiler with C++ 11 support
+ * Conan 1.0.1+
+    * Python 2.7.x
+
+These libraries should be included in your include paths:
+ * CURL-devel
+
+These tools are needed to further development and testing:
+ * Catch2
+
+## Build Instructions
+
+1. conan install .
+2. cmake .
+3. make
+4. GPE_Updater

@@ -1,0 +1,4 @@
+// the configured options and settings for Tutorial
+#define GPEU_VERSION_MAJOR @GPEU_VERSION_MAJOR@
+#define GPEU_VERSION_MINOR @GPEU_VERSION_MINOR@
+#define GPEU_VERSION_STEP @GPEU_VERSION_STEP@
