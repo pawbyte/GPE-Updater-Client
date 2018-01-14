@@ -1,7 +1,6 @@
 cmake_minimum_required (VERSION 2.6)
 project (GPE_Updater)
 add_definitions("-std=c++11")
-set(CMAKE_CXX_COMPILER_ID GNU)
 
 # Version Number
 set (GPEU_VERSION_MAJOR 0)
