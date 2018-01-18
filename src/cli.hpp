@@ -6,6 +6,7 @@ class CLI
 public:
 	CLI();
 	void version();
+	void help(char* execname);
 };
 
 
