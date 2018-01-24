@@ -3,3 +3,6 @@
 #define GPEU_VERSION_MINOR @GPEU_VERSION_MINOR@
 #define GPEU_VERSION_STEP @GPEU_VERSION_STEP@
 #define GPEU_NAME_FULL "Game Pencil Engine Updater"
+#define GPEU_RELEASE_URL "http://release.pawbyte.com/gpe/windows/latest.md5"
+
+

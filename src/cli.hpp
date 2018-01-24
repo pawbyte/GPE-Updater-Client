@@ -1,13 +1,17 @@
 #ifndef CLI_HPP
 #define CLI_HPP
 
-class CLI
-{
-public:
-	CLI();
-	void version();
-	void help(char* execname);
-};
+namespace GPEUP {
 
+	class CLI
+	{
+	public:
+		CLI();
+		void version();
+		void help(char* execname);
+		int prompt();
+	};
+
+}
 
 #endif // !CLI_HPP

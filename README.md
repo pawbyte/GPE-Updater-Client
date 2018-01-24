@@ -24,8 +24,10 @@ Various libraries are needed for the project to be built correctly.
 These tools/utilities are needed to build this project from source:
  * CMake 2.6+
  * Compiler with C++ 11 support
- * Conan 1.0.1+
-    * Python 2.7.x
+ * CURL
+   * libssl-1_1
+   * libcrypto-1_1
+
 
 These libraries should be included in your include paths:
  * CURL-devel
