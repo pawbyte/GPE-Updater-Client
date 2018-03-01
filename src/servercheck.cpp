@@ -44,22 +44,31 @@ namespace GPEUP {
 	}
 
 	bool ServerCheck::md5LineParse(const std::string input) {
-		;
-		std::regex md5Regex("[a-f0-9]{32}", std::regex::ECMAScript | std::regex::icase);
+		std::regex md5Regex("([a-fA-F0-9]{32})(?: \*)(.*)", std::regex::ECMAScript | std::regex::icase);
 
 		std::sregex_iterator md5Begin = std::sregex_iterator(input.begin(), input.end(), md5Regex);
 		std::sregex_iterator md5End = std::sregex_iterator();
 
-		std::cout << "Found " << std::distance(md5Begin, md5End) << " words:\n";
+		//std::cout << "Found " << std::distance(md5Begin, md5End) << " words:\n";
 
 		for (std::sregex_iterator i = md5Begin; i != md5End; ++i) {
 			std::smatch match = *i;
-			std::string match_str = match.str();
-			std::cout << match_str << '\n';
+			std::string match_md5 = match[1];
+			std::string match_file = match[2];
+			match_file.erase(0, 1);
+			servData.insert(std::make_pair(match_file, match_md5));
+			//std::cout << match_md5 << " : " << match_file << '\n';
 		}
 		
 
 		return false;
+	}
+
+	std::unordered_map<std::string, std::string> ServerCheck::getServerData() {
+		if (servData.size() < 1) {
+			check();
+		}
+		return servData;
 	}
 
 }

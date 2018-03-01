@@ -37,8 +37,7 @@ namespace GPEUP {
 		if (INVALID_HANDLE_VALUE == hFile)
 		{
 			dwStatus = GetLastError();
-			printf("Error opening file %s\nError: %d\n", filename,
-				dwStatus);
+			printf("Error opening file %s\nError: %d\n", filename, dwStatus);
 			return dwStatus;
 		}
 
@@ -105,7 +104,7 @@ namespace GPEUP {
 				out << rgbDigits[rgbHash[i] >> 4] << rgbDigits[rgbHash[i] & 0xf];
 			}
 			sum = out.str();
-			printf("\n");
+			//printf("\n");
 		}
 		else
 		{
@@ -120,7 +119,28 @@ namespace GPEUP {
 		return dwStatus;
 	}
 
-	bool checkfile(const std::string path, const std::string knownchecksum) {
-		return true;
+	bool FileCheck::checkfile(const std::string path, const std::string knownchecksum) {
+		std::string result;
+		FileCheck::md5(path, result);
+		if (result.compare(knownchecksum) == 0) {
+			return true;
+		}
+		return false;
 	}
+
+	std::unordered_map<std::string, std::string> FileCheck::checkbatch(const std::unordered_map<std::string, std::string> servData) {
+		std::unordered_map<std::string, std::string> retdata;
+		std::string path;
+		std::string cursum;
+		for (auto iter = servData.begin(); iter != servData.end(); ++iter) {
+			path = iter->first;
+			cursum = iter->second;
+			if (FileCheck::checkfile(path, cursum) == false) {
+				retdata.insert(std::make_pair(path, cursum));
+			}
+		}
+		std::cout << "We found " << retdata.size() << " changed files" << std::endl;
+		return retdata;
+	}
+
 }

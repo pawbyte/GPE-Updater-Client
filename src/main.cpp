@@ -13,6 +13,6 @@ int main( int argc, char ** argv ) {
   cli.version();
   cli.help(*argv);
   cli.prompt();
-  sc.check();
+  //sc.check();
   return 0;
 }

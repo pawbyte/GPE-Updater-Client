@@ -1,7 +1,5 @@
-#include <iostream>
 #include "cli.hpp"
-#include "updaterConfig.hpp"
-#include "filecheck.hpp"
+
 
 namespace GPEUP {
 
@@ -22,19 +20,18 @@ namespace GPEUP {
 		std::cout << "-v\tVersion Information" << std::endl;
 		std::cout << "-h\tDisplay this help menu" << std::endl;
 		std::cout << "-s\tSilent, No GUI. Just return a return code" << std::endl;
+		std::cout << "-i\tIntegrity Check. Verifies that the current set of files are the same as the current version" << std::endl;
 		std::cout << "-u\tUpdate files in the project, return status code on success or failure" << std::endl;
-		std::cout << "--nb\tNo Backups" << std::endl;
+		std::cout << "--nb\tNo Backups" << std::endl << std::endl;
 	}
 
 	int CLI::prompt() {
 		FileCheck fc;
-		std::string location("test.txt");
-		std::string result;
-		fc.md5(location, result);
-		std::cout << "Result of '" << location << "' is: " << result << std::endl;
-		location = "something.txt";
-		fc.md5(location, result);
-		std::cout << "Result of '" << location << "' is: " << result << std::endl;
+		ServerCheck sc;
+		std::unordered_map<std::string, std::string> sdata;
+		sdata = sc.getServerData();
+		fc.checkbatch(sdata);
+
 		return 0;
 	}
 
