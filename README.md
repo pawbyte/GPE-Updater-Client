@@ -1,12 +1,10 @@
 # Game Pencil Editor Updater
 
+This software is the updator module used to update both development and release versions of GPE project files.
 
-This is the updator module used to update the GPE project files.
+The update branch is be chosen via the configuration file. If no configuration file is present, the release versions are used by default.
 
-This can be used to update development and release versions.  The update branch can be chosen via the configuration file.  
-If no configuration file is present, then the default is to use release versions of everything.
-
-By default, the updater will not make any modifications to files. It will only respond with a return code and/or display a dialog showing update information. To update files, pass in the update flag, detailed in the [Options](#Options) section.
+The updater will not modify any files by default, but will respond with a return code and/or display a dialog showing update information. To update files, pass in the update flag, detailed in the [Options](#Options) section.
 
 ## Options
 
@@ -19,17 +17,16 @@ By default, the updater will not make any modifications to files. It will only r
 
 ## Build Requirements
 
-Various libraries are needed for the project to be built correctly.  
+This software requires extra libraries to be built correctly.
 
-These tools/utilities are needed to build this project from source:
+These tools and utilities are needed to build this project from source:
  * CMake 2.6+
  * Compiler with C++ 11 support
  * CURL
    * libssl-1_1
    * libcrypto-1_1
 
-
-These libraries should be included in your include paths:
+These libraries should be in the include paths:
  * CURL-devel
 
 These tools are needed to further development and testing:
